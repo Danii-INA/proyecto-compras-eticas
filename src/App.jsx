@@ -12,10 +12,19 @@ function App() {
   });
 
   useEffect(() => {
-    // Guardo en Local Storage cada vez que mi lista de 'compras' cambia.
+    // Guardo en Local Storage cada vez que la lista de 'compras' se actualice.
     localStorage.setItem('compras', JSON.stringify(compras));
   }, [compras]);
-
+// Mi nueva función para eliminar una compra por su ID.
+  const eliminarCompra = (id) => {
+    // Confirmo con el usuario antes de borrar.
+    const confirmar = window.confirm("¿Estás seguro de que deseas eliminar esta compra?");
+    if (confirmar) {
+      // Uso 'filter' para crear un nuevo arreglo con todas las compras EXCEPTO la que tiene el id que quiero borrar.
+      const comprasActualizadas = compras.filter(compra => compra.id !== id);
+      setCompras(comprasActualizadas);
+    }
+  };
   const agregarCompra = (compra) => {
     // Añado un id único a la nueva compra antes de guardarla en la lista.
     const nuevaCompra = { ...compra, id: Date.now() };
@@ -32,7 +41,8 @@ function App() {
       {/* Le paso mi estado 'compras' para que sepa qué mostrar. */}
       <hr />
       <h2 className='mt-4'>Mis Compras Registradas</h2>
-      <ListaCompras compras={compras} />
+      {/* Ahora también la función de eliminar esta en el componente de lista */}
+      <ListaCompras compras={compras} onEliminarCompra={eliminarCompra} />
     </Container>
   );
 }
