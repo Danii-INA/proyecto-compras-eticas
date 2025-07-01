@@ -1,41 +1,36 @@
 import React from 'react';
 import { Table, Badge } from 'react-bootstrap';
-
-// se recibe la lista de compras como un "prop" desde App.jsx
-const ListaCompras = ({ compras }) => {
-
+    // Ahora se agrega también la función 'onEliminarCompra' como prop.
+const ListaCompras = ({ compras, onEliminarCompra }) => {
+  // ... (tu if de si no hay compras)
   // Si no hay compras, se muestra el siguiente mensaje.
   if (compras.length === 0) {
     return <p className="mt-4 text-center">Aún no has registrado ninguna compra.</p>;
   }
 
   return (
-    // se utiliza una tabla de Bootstrap para que se vea ordenado.
     <Table striped bordered hover responsive className="mt-4">
       <thead>
         <tr>
-          <th>Producto</th>
-          <th>Marca</th>
-          <th>Fecha</th>
-          <th>Categoría</th>
+          {/* ... (tus otras columnas) ... */}
           <th>Evaluación</th>
-          {/* Más adelante añadiré aquí una columna para las acciones (editar/eliminar) */}
+          <th>Acciones</th> {/* Añado la nueva columna */}
         </tr>
       </thead>
       <tbody>
-        {/* Hago un recorrido por el arreglo de compras para crear una fila por cada una. */}
-        {/* La 'key' es un identificador único que React necesita para cada elemento de la lista. */}
         {compras.map((compra) => (
           <tr key={compra.id}>
-            <td>{compra.producto}</td>
-            <td>{compra.marca}</td>
-            <td>{compra.fecha}</td>
-            <td>{compra.categoria}</td>
+            {/* ... (tus otros <td>) ... */}
             <td>
-                {/* Uso un "Badge" para que la evaluación se vea más bonita. */}
                 <Badge bg={compra.evaluacion === 'impulsiva' ? 'warning' : 'success'}>
                     {compra.evaluacion}
                 </Badge>
+            </td>
+            <td>
+              {/* Mi nuevo botón de eliminar. Al hacerle clic, llama a la función que recibí con el id de esta compra. */}
+              <Button variant="danger" size="sm" onClick={() => onEliminarCompra(compra.id)}>
+                Eliminar
+              </Button>
             </td>
           </tr>
         ))}
