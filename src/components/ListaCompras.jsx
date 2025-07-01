@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Badge } from 'react-bootstrap';
+import { Table, Badge, Button } from 'react-bootstrap';
     // Ahora se agrega también la función 'onEliminarCompra' como prop.
 const ListaCompras = ({ compras, onEliminarCompra }) => {
   // ... (tu if de si no hay compras)
