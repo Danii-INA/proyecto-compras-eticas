@@ -1,9 +1,11 @@
 import React from 'react';
+// Asegúrate de que Button esté importado aquí
 import { Table, Badge, Button } from 'react-bootstrap';
-    // Ahora se agrega también la función 'onEliminarCompra' como prop.
-const ListaCompras = ({ compras, onEliminarCompra }) => {
-  // ... (tu if de si no hay compras)
-  // Si no hay compras, se muestra el siguiente mensaje.
+
+// Ahora también recibo 'onSeleccionarCompra' para poder editar.
+const ListaCompras = ({ compras, onEliminarCompra, onSeleccionarCompra }) => {
+
+  // Si no hay compras, muestro un mensaje.
   if (compras.length === 0) {
     return <p className="mt-4 text-center">Aún no has registrado ninguna compra.</p>;
   }
@@ -12,22 +14,36 @@ const ListaCompras = ({ compras, onEliminarCompra }) => {
     <Table striped bordered hover responsive className="mt-4">
       <thead>
         <tr>
-          {/* ... (tus otras columnas) ... */}
+          <th>Producto</th>
+          <th>Marca</th>
+          <th>Fecha</th>
+          <th>Categoría</th>
           <th>Evaluación</th>
-          <th>Acciones</th> {/* Añado la nueva columna */}
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
         {compras.map((compra) => (
           <tr key={compra.id}>
-            {/* ... (tus otros <td>) ... */}
+            <td>{compra.producto}</td>
+            <td>{compra.marca}</td>
+            <td>{compra.fecha}</td>
+            <td>{compra.categoria}</td>
             <td>
                 <Badge bg={compra.evaluacion === 'impulsiva' ? 'warning' : 'success'}>
                     {compra.evaluacion}
                 </Badge>
             </td>
             <td>
-              {/* Mi nuevo botón de eliminar. Al hacerle clic, llama a la función que recibí con el id de esta compra. */}
+              {/* Mi nuevo botón de Editar */}
+              <Button 
+                variant="warning" 
+                size="sm" 
+                className="me-2"
+                onClick={() => onSeleccionarCompra(compra)}
+              >
+                Editar
+              </Button>
               <Button variant="danger" size="sm" onClick={() => onEliminarCompra(compra.id)}>
                 Eliminar
               </Button>
