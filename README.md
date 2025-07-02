@@ -33,14 +33,14 @@ Versionamiento con Git y publicarlo en GitHub. |
 -----------------------------------------------------------------------
                     Instrucciones de Instalación:                     |
 1. Clona el repositorio                                               |
- Git clone https://github.com/Danii-INA/proyecto-compras-eticas.git    |
+ Git clone https://github.com/Danii-INA/proyecto-compras-eticas.git   |
 -----------------------------------------------------------------------
 2. Accede a la carpeta del proyecto  |
- cd proyecto-compras-eticas          |
+        cd proyecto-compras-eticas   |
 --------------------------------------
 3. Instala las dependencias          |
- npm install                |
+          npm install                |
 -------------------------------------- 
 4. Inicia la pagina del servidor     |                             
- npm run dev                         |  
+            npm run dev              |  
 --------------------------------------
