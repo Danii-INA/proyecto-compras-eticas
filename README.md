@@ -1,5 +1,5 @@
 # Control de Compras Éticas 
-                           Caso Número 7 "Control de Compras Éticas" |
+                         Caso Número 7 "Control de Compras Éticas |
 Aplicación que permita a los usuarios llevar registro de sus compras personales, 
 indicando producto, marca, fecha, motivo de la compra y categoría (ropa, 
 tecnología, comida, etc.). Además, el sistema debe permitir que los usuarios evalúen 
@@ -9,7 +9,6 @@ hábitos, alertas de sobreconsumo y sugerencias de mejora. Todos los datos deben
 guardarse en Local Storage. El valor agregado será proporcionado mediante la 
 integración de una API pública cuya elección queda a criterio del grupo. Bootstrap 
 debe utilizarse para facilitar una interfaz atractiva y ordenada.
-#
 ------------------------------------------------------------------------------------------------------------------------
 Funcionalidad Principal: Registrar compras personales.                                                                 |
 ------------------------------------------------------------------------------------------------------------------------
@@ -44,3 +43,7 @@ Versionamiento con Git y publicarlo en GitHub. |
 4. Inicia la pagina del servidor     |                             
             npm run dev              |  
 --------------------------------------
+
+Integrantes proyecto: 
+Danilo C
+Simon E
