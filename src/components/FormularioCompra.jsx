@@ -4,20 +4,20 @@ import { Form, Button, Row, Col } from 'react-bootstrap';
 // Ahora recibo más props para manejar la lógica de actualización.
 const FormularioCompra = ({ onAgregarCompra, onActualizarCompra, compraAEditar, setCompraAEditar }) => {
   
-  // Mi estado inicial para el objeto 'compra'.
+  // Estado inicial para el objeto 'compra'. //añadimos precio al estado inicial del formulario.
   const [compra, setCompra] = useState({
-    producto: '', marca: '', fecha: '', categoria: '', motivo: '', evaluacion: 'responsable'
+    producto: '', marca: '', fecha: '', categoria: '', motivo: '', evaluacion: 'responsable', precio: ''
   });
 
   // Este useEffect se activa cuando 'compraAEditar' cambia.
   useEffect(() => {
     if (compraAEditar) {
-      // Si hay una compra para editar, relleno el formulario con sus datos.
+      // Si hay una compra para editar, se rellena el formulario con los datos.
       setCompra(compraAEditar);
     } else {
       // Si no, limpio el formulario.
       setCompra({
-        producto: '', marca: '', fecha: '', categoria: '', motivo: '', evaluacion: 'responsable'
+        producto: '', marca: '', fecha: '', categoria: '', motivo: '', evaluacion: 'responsable', precio: ''
       });
     }
   }, [compraAEditar]);
@@ -27,10 +27,11 @@ const FormularioCompra = ({ onAgregarCompra, onActualizarCompra, compraAEditar, 
     setCompra({ ...compra, [e.target.name]: e.target.value });
   };
 
+  //Añadi Validacion del Precio
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!compra.producto || !compra.fecha) {
-      alert("Producto y Fecha son obligatorios");
+   if (!compra.producto || !compra.fecha || !compra.precio) {
+      alert("Producto y Fecha y precio son obligatorios");
       return;
     }
 
@@ -56,6 +57,19 @@ const FormularioCompra = ({ onAgregarCompra, onActualizarCompra, compraAEditar, 
         <Form.Group as={Row} className="mb-3"><Form.Label column sm={2}>Categoría:</Form.Label><Col sm={10}><Form.Control type="text" name="categoria" placeholder="Ej: Ropa, Tecnología..." value={compra.categoria} onChange={handleChange} /></Col></Form.Group>
         <Form.Group as={Row} className="mb-3"><Form.Label column sm={2}>Motivo:</Form.Label><Col sm={10}><Form.Control as="textarea" rows={2} name="motivo" value={compra.motivo} onChange={handleChange} /></Col></Form.Group>
         <Form.Group as={Row} className="mb-3"><Form.Label column sm={2}>Evaluación:</Form.Label><Col sm={10}><Form.Select name="evaluacion" value={compra.evaluacion} onChange={handleChange}><option value="responsable">Compra Responsable</option><option value="impulsiva">Compra Impulsiva</option></Form.Select></Col></Form.Group>
+        {/* Campo para Precio */}
+        <Form.Group as={Row} className="mb-3">
+          <Form.Label column sm={2}>Precio:</Form.Label>
+          <Col sm={10}>
+            <Form.Control 
+              type="number" 
+              placeholder="Ej: 25000" 
+              name="precio" 
+              value={compra.precio} 
+              onChange={handleChange} 
+            />
+          </Col>
+        </Form.Group>
 
         {/* Los botones cambian dinámicamente */}
         <Button variant={compraAEditar ? "warning" : "primary"} type="submit">

@@ -17,6 +17,7 @@ const ListaCompras = ({ compras, onEliminarCompra, onSeleccionarCompra }) => {
           <th>Producto</th>
           <th>Marca</th>
           <th>Fecha</th>
+          <th>Precio</th> {/* nueva columna para precio*/}
           <th>Categoría</th>
           <th>Evaluación</th>
           <th>Acciones</th>
@@ -28,25 +29,12 @@ const ListaCompras = ({ compras, onEliminarCompra, onSeleccionarCompra }) => {
             <td>{compra.producto}</td>
             <td>{compra.marca}</td>
             <td>{compra.fecha}</td>
-            <td>{compra.categoria}</td>
+            {/* Muestro el precio formateado como moneda chilena */}
+            <td>{new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(compra.precio)}</td>
+            <td><Badge bg={compra.evaluacion === 'impulsiva' ? 'warning' : 'success'}>{compra.evaluacion}</Badge></td>
             <td>
-                <Badge bg={compra.evaluacion === 'impulsiva' ? 'warning' : 'success'}>
-                    {compra.evaluacion}
-                </Badge>
-            </td>
-            <td>
-              {/* Mi nuevo botón de Editar */}
-              <Button 
-                variant="warning" 
-                size="sm" 
-                className="me-2"
-                onClick={() => onSeleccionarCompra(compra)}
-              >
-                Editar
-              </Button>
-              <Button variant="danger" size="sm" onClick={() => onEliminarCompra(compra.id)}>
-                Eliminar
-              </Button>
+              <Button variant="warning" size="sm" className="me-2" onClick={() => onSeleccionarCompra(compra)}>Editar</Button>
+              <Button variant="danger" size="sm" onClick={() => onEliminarCompra(compra.id)}>Eliminar</Button>
             </td>
           </tr>
         ))}
