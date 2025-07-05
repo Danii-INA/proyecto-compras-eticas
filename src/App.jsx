@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap';
 import FormularioCompra from './components/FormularioCompra';
 import ListaCompras from './components/ListaCompras'; // Lo importo aquí
 import Dashboard from './components/Dashboard'; // Se importa componente  Dashboard
+import IndicadorDolar from './components/indicadordolar'; //Se importa nuevo componente IndicadorDolar
 
 function App() {
   const [compras, setCompras] = useState(() => {
@@ -57,7 +58,10 @@ function App() {
       <h1>Control de Compras Éticas</h1>
       
       {/* Muestro el Dashboard arriba de todo, pasándole las compras */}
-      <Dashboard compras={compras} />
+            <Dashboard compras={compras} />
+      
+      {/* 2. AÑADO EL COMPONENTE AQUÍ PARA QUE SE MUESTRE */}
+      <IndicadorDolar />
 
       <hr />
       {/* Ahora le paso al formulario la lógica de edición */}
