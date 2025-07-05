@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from 'react-bootstrap';
 import FormularioCompra from './components/FormularioCompra';
 import ListaCompras from './components/ListaCompras'; // Lo importo aquí
+import Dashboard from './components/Dashboard'; // Se importa componente  Dashboard
 
 function App() {
   const [compras, setCompras] = useState(() => {
@@ -54,6 +55,10 @@ function App() {
  return (
     <Container className="mt-5">
       <h1>Control de Compras Éticas</h1>
+      
+      {/* Muestro el Dashboard arriba de todo, pasándole las compras */}
+      <Dashboard compras={compras} />
+
       <hr />
       {/* Ahora le paso al formulario la lógica de edición */}
       <FormularioCompra 
