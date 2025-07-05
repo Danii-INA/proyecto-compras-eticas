@@ -1,6 +1,7 @@
 import React from 'react';
 // Asegúrate de que Button esté importado aquí
 import { Table, Badge, Button } from 'react-bootstrap';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 
 // Ahora también recibo 'onSeleccionarCompra' para poder editar.
 const ListaCompras = ({ compras, onEliminarCompra, onSeleccionarCompra }) => {
@@ -33,8 +34,13 @@ const ListaCompras = ({ compras, onEliminarCompra, onSeleccionarCompra }) => {
             <td>{new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(compra.precio)}</td>
             <td><Badge bg={compra.evaluacion === 'impulsiva' ? 'warning' : 'success'}>{compra.evaluacion}</Badge></td>
             <td>
-              <Button variant="warning" size="sm" className="me-2" onClick={() => onSeleccionarCompra(compra)}>Editar</Button>
-              <Button variant="danger" size="sm" onClick={() => onEliminarCompra(compra.id)}>Eliminar</Button>
+              <Button variant="warning" size="sm" className="me-2" onClick={() => onSeleccionarCompra(compra)}>
+      <FaEdit /> Editar
+    </Button>
+    <Button variant="danger" size="sm" onClick={() => onEliminarCompra(compra.id)}>
+      <FaTrash /> Eliminar
+    </Button>
+
             </td>
           </tr>
         ))}
