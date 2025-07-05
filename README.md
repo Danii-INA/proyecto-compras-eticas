@@ -47,3 +47,14 @@ Versionamiento con Git y publicarlo en GitHub. |
 Integrantes proyecto: 
 Danilo C
 Simon E
+
+### Tecnologías Utilizadas
+
+* **React:** Para la construcción de la interfaz de usuario y el manejo de estados.
+* **Vite:** Como entorno de desarrollo y empaquetador de alta velocidad.
+* **React-Bootstrap:** Para el diseño, la maquetación y los componentes visuales.
+* **Git y GitHub:** Para el control de versiones y el flujo de trabajo colaborativo.
+
+### Integración de API Pública
+
+Para cumplir con el requisito de valor agregado, seleccionamos la API pública de **mindicador.cl**. El endpoint utilizado fue `/api/dolar` para obtener y mostrar el valor actualizado del Dólar observado en pesos chilenos. Este dato aporta un contexto financiero real a los gastos que el usuario registra en la aplicación.
