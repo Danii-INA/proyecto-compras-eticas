@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Col, Row, ProgressBar } from 'react-bootstrap';
+import { FaShoppingCart, FaDollarSign, FaExclamationTriangle } from 'react-icons/fa';
 
 // El dashboard recibe la lista de compras para poder calcular las estadísticas
 const Dashboard = ({ compras }) => {
@@ -22,7 +23,7 @@ const Dashboard = ({ compras }) => {
         <Col md={4} className="mb-3">
           <Card className="text-center h-100">
             <Card.Body>
-              <Card.Title>Total Gastado</Card.Title>
+              <Card.Title><FaDollarSign className="me-2" />Total Gastado</Card.Title>
               <Card.Text className="fs-4 fw-bold">
                 {new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(totalGastado)}
               </Card.Text>
@@ -32,7 +33,7 @@ const Dashboard = ({ compras }) => {
         <Col md={4} className="mb-3">
           <Card className="text-center h-100">
             <Card.Body>
-              <Card.Title>Total de Compras</Card.Title>
+             <Card.Title><FaShoppingCart className="me-2" />Total de Compras</Card.Title>
               <Card.Text className="fs-4 fw-bold">
                 {totalCompras}
               </Card.Text>
@@ -42,7 +43,7 @@ const Dashboard = ({ compras }) => {
         <Col md={4} className="mb-3">
           <Card className="text-center h-100">
             <Card.Body>
-              <Card.Title>Compras Impulsivas</Card.Title>
+              <Card.Title><FaExclamationTriangle className="me-2" />Compras Impulsivas</Card.Title>
               <Card.Text className="fs-4 fw-bold text-warning">
                 {comprasImpulsivas}
               </Card.Text>

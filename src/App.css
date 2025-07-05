@@ -40,3 +40,16 @@
 .read-the-docs {
   color: #888;
 }
+
+body {
+  background-color: #f8f9fa; /* Un gris muy claro de Bootstrap */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
